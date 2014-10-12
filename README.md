@@ -1,4 +1,4 @@
-== Riding Rails
+# Riding Rails
 
 Small 3h workshop of Ruby on Rails based on a Microblogging platform.
 Inspiration from Michael Hartl's [Ruby on Rails Tutorial](https://www.railstutorial.org/)
