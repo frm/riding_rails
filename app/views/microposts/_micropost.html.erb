@@ -1,0 +1,14 @@
+<li>
+  <div class="micropost-show">
+    <p>
+        <%= micropost.content %>
+    </p>
+    <%= link_to micropost.user.name, user_profile_path(micropost.user) %>
+
+    <% if current_user == micropost.user %>
+        <%= link_to "delete", delete_micropost_path(micropost), method: :delete,
+                                       data: { confirm: "You sure?" },
+                                       title: micropost.content %>
+    <% end %>
+  </div>
+</li>

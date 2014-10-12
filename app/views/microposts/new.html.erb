@@ -1,0 +1,4 @@
+<%= form_for @micropost do |mp| %>
+    <%= mp.text_area :content, placeholder: "This is limited to 140 chars", class: 'micropost-new-content' %>
+    <%= mp.submit 'Submit Micropost' %>
+<% end %>

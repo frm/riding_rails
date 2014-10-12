@@ -14,4 +14,25 @@ class User < ActiveRecord::Base
                                    class_name: 'Relationship',
                                    :dependent => :destroy
 
+  has_many :microposts, dependent: :destroy
+
+  def follow!(user)
+    relationships.create(followed_id: user.id)
+  end
+
+  def unfollow!(user)
+    relationship(user).destroy if following?(user)
+  end
+
+  def following?(user)
+    !relationship(user).nil?
+  end
+
+  def followed_by?(user)
+    !reverse_relationships.find_by(follower_id: user.id).nil?
+  end
+
+  def feed
+    Micropost.where("user_id IN (?) OR user_id = ?", self.following_ids, self.id)
+  end
 end
